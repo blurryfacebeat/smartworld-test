@@ -1,18 +1,44 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <CityWeather />
+    <WeatherNow />
+    <TenDays />
+    <PopularCities />
+    <DaylightHours />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapGetters } from 'vuex'
+import CityWeather from '../components/CityWeather.vue'
+import WeatherNow from '../components/WeatherNow.vue'
+import TenDays from '@/components/TenDays.vue'
+import PopularCities from '../components/PopularCities.vue'
+import DaylightHours from '../components/DaylightHours.vue'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  components: { CityWeather, WeatherNow, TenDays, PopularCities, DaylightHours },
+  data: () => ({
+
+  }),
+  computed: {
+    ...mapGetters(['userInfo'])
+  },
+  mounted() {
+    
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .home {
+    &__city-weather {
+      margin-top: 30px;
+
+      h2 {
+        font-weight: 600;
+        font-size: 22px;
+      }
+    }
+  }
+</style>
